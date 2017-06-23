@@ -55,7 +55,7 @@ export default {
   },
   watch: {
     current(val) {
-      console.log(val)
+      // console.log(val)
       this.index = val;
     }
   },

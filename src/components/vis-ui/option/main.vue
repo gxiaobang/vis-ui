@@ -1,14 +1,16 @@
 <template>
-  <option class="vis-option" :value="value">
+  <el-option v-bind="$props">
     <slot></slot>
-  </option>
+  </el-option>
 </template>
 
 <script>
-export default {
-  name: 'vis-option',
-  props: ['value']
-}
+  import { Option } from 'element-ui'
+  export default {
+    name: 'vis-option',
+    props: ['value'],
+    mixins: [Option],
+  }
 </script>
 
 <style lang="scss" scoped>

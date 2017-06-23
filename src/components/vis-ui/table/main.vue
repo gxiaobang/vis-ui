@@ -165,13 +165,17 @@ export default {
       top: 40%;
     }
   }
+}
 
-  .link {
-    padding-right: 4px;
-    border-right: 1px solid #bbbbbb;
+:global {
+  .vis-table-link-group {
+    a {
+      padding-right: 4px;
+      border-right: 1px solid #bbbbbb;
 
-    &:last-child {
-      border-right: none;
+      &:last-child {
+        border-right: none;
+      }
     }
   }
 }

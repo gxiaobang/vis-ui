@@ -1,12 +1,12 @@
 <template>
   <div class="fetch">
-    <slot :data="data"></slot>  
+    <slot :data="data"></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'vis-ui',
+  name: 'fetch',
   data() {
     return {
       data: []

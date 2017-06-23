@@ -1,4 +1,6 @@
 import Vue from 'vue';
+import Icon from './icon';
+import Spin from './spin';
 import Button from './button';
 import Input from './input';
 import Form from './form';
@@ -8,12 +10,13 @@ import Option from './option';
 import Table from './table';
 import Dialog from './dialog';
 import Pagination from './pagination';
-import Icon from './icon';
-import Spin from './spin';
+import DatePicker from './date-picker';
 
 const components = [
-  Button, Input, Form, FormItem, Select, Option, Table, Dialog, Pagination, Icon, Spin
+  Icon, Spin, Button, Input, Form, FormItem, Select, Option, Table, Dialog, Pagination,  DatePicker
 ];
+
+console.log(DatePicker)
 
 components.map(component => {
   Vue.component(component.name, component)
