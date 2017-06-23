@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "title": "集团信息", "url": "/basedata/enterprise/index", "code": "enterprise"
+    },
+    {
+      "title": "品牌信息", "url": "/basedata/brand/index", "code": "brand"
+    },
+    {
+      "title": "酒店信息", "url": "/basedata/hotel/index", "code": "hotel"
+    },
+	  {
+      "title": "房型信息", "url": "/basedata/roomType/index", "code": "roomType"
+    },
+    {
+      "title": "基础参数", "url": "/basedata/basicParam/index", "code": "basicParam"
+    },
+    {
+      "title": "用户管理", "url": "/arm/user/index", "code": "user"
+    },
+    {
+      "title": "测试页面", "url": "/test/index", "code": "test"
+    }
+  ]
+} 

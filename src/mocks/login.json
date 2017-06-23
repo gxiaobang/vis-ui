@@ -1,0 +1,7 @@
+{
+  "code": "ok",
+  "message": "登录成功",
+  "data": {
+    "token": "@id"
+  }
+}

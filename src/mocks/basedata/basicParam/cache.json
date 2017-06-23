@@ -1,0 +1,12 @@
+{
+  "code": "SUCCESS",
+  "message": "成功",
+  "data|1-10": [
+    {
+      "configMap": {
+        "@id": "@cname"
+      },
+      "name": "@cname"
+    }
+  ]
+}

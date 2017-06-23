@@ -1,0 +1,30 @@
+{
+  "code": "SUCCESS",
+  "message": "成功",
+  "data": [
+    {
+      "label": "@cname",
+      "value": "@id",
+      "children": [
+        {
+          "label": "@cname",
+          "value": "@id",
+          "children": [
+            {
+              "label": "@cname",
+              "value": "@id"
+            }
+          ]
+        },
+        {
+          "label": "@cname",
+          "value": "@id"
+        }
+      ]
+    },
+    {
+      "label": "@cname",
+      "value": "@id"
+    }
+  ]
+}

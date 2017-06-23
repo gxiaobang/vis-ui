@@ -1,0 +1,30 @@
+/**
+ * 变量声明
+ */
+
+// 颜色
+$white:  #fff !default;
+$black:  #000 !default;
+$red:    #d9534f !default;
+$orange: #f0ad4e !default;
+$yellow: #ffd500 !default;
+$green:  #5cb85c !default;
+$blue:   #108ae2 !default;
+$teal:   #5bc0de !default;
+$pink:   #ff5b77 !default;
+$purple: #613d7c !default;
+
+$primary-bg-color: #e4e4e4;
+$secondary-bg-color: $white;
+
+$success-color: $green;
+$primary-color: $blue;
+$warn-color: $yellow;
+$danger-color: $red;
+
+$border-color: #ccc;
+$text-color: #999;
+$text-light-color: #666;
+
+$border: 1px solid $border-color;
+$border-transparent: 1px solid transparent;
