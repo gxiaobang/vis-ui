@@ -6,18 +6,20 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   routes: [
-    /*{
-      path: '/',
-      name: 'home',
-      component: (resolve) => {
-        require(['@/views/home/index'], resolve)
-      }
-    },*/
     {
-      path: '/test',
-      name: 'test',
-      component: (resolve) => {
-        require(['@/views/test/index'], resolve)
+      path: '/login',
+      component(resolve) {
+        require(['@/views/login/index'], resolve)
+      }
+    },
+    {
+      path: '/*',
+      component(resolve) {
+        let path = window.location.pathname.replace(/^\//, '')
+        // views
+        if (path) {
+          require(['@/views/' + path + '.vue'], resolve)
+        }
       }
     }
   ]
