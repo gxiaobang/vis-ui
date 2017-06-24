@@ -9,6 +9,7 @@
   </select> -->
 
   <el-select
+    ref="reference"
     v-bind="$props"
     v-model="val"
     size="small"
