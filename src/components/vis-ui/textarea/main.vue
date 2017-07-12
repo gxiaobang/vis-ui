@@ -1,20 +1,17 @@
 <template>
-  <input
-    class="vis-input"
-    type="text"
-    :disabled="formDisabled"
+  <textarea
     v-bind="$props"
+    :disabled="formDisabled"
+    class="vis-textarea"
     @input="handleInput"
-    @keyup="handleKeyUp"
-  >
+  ></textarea>
 </template>
 
 <script>
   import getParent from '@/utils/getParent';
   export default {
-    name: 'vis-input',
+    name: 'vis-textarea',
     data() {
-      // console.log(this.$parent)
       return {
         form: getParent(this, 'vis-form'),
         validator: getParent(this, 'vis-validate', 1)
@@ -31,41 +28,35 @@
       }
     },
     props: {
-      value: [String, Number]
-    },
-    mounted() {
-      // console.log(this.$props)
-      // console.log(this)
+      value: String
     },
     methods: {
       handleInput(event) {
         let value = event.target.value;
         this.$emit('input', value);
 
-        // console.log(this.validator)
-
         if (this.validator) {
           this.validator.$emit('validate', value);
         }
-      },
-      handleKeyUp(event) {
-        this.$emit('keyup', event);
       }
     }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+ /**
+  * 多行文本框
+  */
   @import "~@/styles/main";
-  .vis-input {
-    width: 172px;
-    height: 30px;
-    padding: 4px 7px;
+
+  .vis-textarea {
+    width: 770px;
+    height: 98px;
+    padding: 5px;
     border: $border;
     border-radius: 6px;
-    font-size: 12px;
-    line-height: 1.5;
     color: #666;
+    resize: vertical;
 
     @extend %form-disabled;
   }

@@ -17,14 +17,12 @@ const sitePath = path.resolve(distPath, version);
 // 接口代理
 for (let key in api.dev) {
   if (api.dev[ key ]) {
-    app.use(`/proxy/${key}`, proxy({
+    console.log('proxy: ' + '/' + key);
+    app.use('/' + key, proxy({
       target: api.dev[ key ], // 代理服务的地址,
-      changeOrigin: true,
-      pathRewrite: {
-        '^/proxy': ''
-      }
+      changeOrigin: true
     }));
-  } 
+  }
 }
 
 // 静态文件

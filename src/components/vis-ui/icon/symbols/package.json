@@ -1,9 +1,0 @@
-{
-  "scripts": {
-    "start": "gulp sprites"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-svg-symbols": "^2.0.2"
-  }
-}

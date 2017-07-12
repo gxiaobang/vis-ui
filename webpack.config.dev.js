@@ -11,11 +11,10 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 const path = require('path');
-
 const { devPort, rootPath, srcPath, lang } = require('./config/base.config');
 const api = require('./config/api.config');
 
-// 国际化
+// 本地化
 const locale = require('./i18n/locale');
 
 
@@ -28,12 +27,9 @@ module.exports = (env = {}) => {
   // 代理
   const proxy = {};
   for (let key in api[env.refer]) {
-    proxy[`/proxy/${key}`] = {
+    proxy['/' + key] = {
       target: api[env.refer][key],
-      secure: false,
-      pathRewrite: {
-        '^/proxy': ''
-      }
+      secure: false
     }
   }
 
@@ -42,9 +38,9 @@ module.exports = (env = {}) => {
     // cheap-module-eval-source-map is faster for development
     devtool: '#cheap-module-eval-source-map',
     entry: {
-      app: './src/app',
+      app: path.resolve(srcPath, './app'),
       // 第三方
-      vendor: ['vue', 'lodash', 'moment']
+      vendor: ['vue', 'element-ui', 'moment', 'axios']
     },
     output: {
       filename: '[name].js',
@@ -56,6 +52,7 @@ module.exports = (env = {}) => {
       alias: {
         'vue$': 'vue/dist/vue.esm.js',
         '@': srcPath,
+        'vis-ui': path.resolve(srcPath, './components/vis-ui'),
         'config': path.resolve(rootPath, './config'),
       }
     },
@@ -107,7 +104,7 @@ module.exports = (env = {}) => {
 
       // 修改页面静态文件路径
       new HtmlWebpackPlugin({
-        title: 'Vis UI组件',
+        title: '东呈国际酒店集团',
         lang: env.lang,
         template: path.resolve(srcPath, './index.html')
       }),

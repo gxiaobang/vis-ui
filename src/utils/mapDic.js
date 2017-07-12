@@ -2,15 +2,15 @@
  * 字典表map
  */
 
-import { http } from '@/utils';
+import fetch from '@/utils/fetch';
 
 let dic;
 // 请求字典表
 const getDic = (onSuccess) => {
-  http({
+  fetch({
     url: '/basedata/basicParam/cache',
     onSuccess: (data) => {
-      console.log(data);
+      console.log('字典表：', data);
       dic = data.data;
       onSuccess && onSuccess(data);
     }

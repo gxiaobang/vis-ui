@@ -6,17 +6,17 @@
 </template>
 
 <script>
-export default {
-  name: 'vis-spin'
-}
+  export default {
+    name: 'vis-spin'
+  }
 </script>
 
-<style lang="scss" scoped>
-.vis-spin-wrapper {
-  .vis-icon {
-    margin-top: -2px;
-    margin-right: 6px;
-    vertical-align: middle;
+<style lang="scss">
+  .vis-spin-wrapper {
+    .vis-icon {
+      margin-top: -2px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
   }
-}
 </style>

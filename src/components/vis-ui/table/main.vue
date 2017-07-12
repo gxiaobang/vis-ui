@@ -5,7 +5,7 @@
         <thead>
           <tr>
             <th v-for="item in columns">
-              {{ item.label }}
+              {{ item.title }}
             </th>
           </tr>
         </thead>
@@ -53,130 +53,132 @@
 </template>
 
 <script>
-import dom from '@/utils/dom';
-import _ from 'lodash';
-export default {
-  name: 'vis-table',
-  data() {
-    return {
-      timer: +new Date
-    }
-  },
-  props: {
-    columns: {
-      type: Array,
-      default: []
+  import dom from '@/utils/dom';
+  import _ from 'lodash';
+  export default {
+    name: 'vis-table',
+    data() {
+      return {
+        timer: +new Date
+      }
     },
-    data: {
-      type: Array,
-      default: []
+    props: {
+      columns: {
+        type: Array,
+        default: []
+      },
+      data: {
+        type: Array,
+        default: []
+      },
+      page: {
+        type: Object,
+        default: {}
+      },
+      loading: {
+        type: Boolean,
+        default: false
+      }
     },
-    page: {
-      type: Object,
-      default: {}
+    computed: {
+      keys() {
+        return this.columns.map(item => item.key);
+      }
     },
-    loading: {
-      type: Boolean,
-      default: false
-    }
-  },
-  computed: {
-    keys() {
-      return this.columns.map(item => item.key);
-    }
-  },
 
-  watch: {
-    page() {
-      // console.log(this.page)
-      this.timer = +new Date;
-    }
-  },
+    watch: {
+      page() {
+        // console.log(this.page)
+        this.timer = +new Date;
+      }
+    },
 
-  methods: {
-    // 分页修改
-    handleChange(current, size) {
-      // console.log(current, size);
-      this.$emit('change', current, size);
+    methods: {
+      // 分页修改
+      handleChange(current, size) {
+        // console.log(current, size);
+        this.$emit('change', current, size);
+      }
     }
   }
-}
 </script>
 
-<style lang="scss" scoped>
-@import "~@/styles/main";
+<style lang="scss">
+  @import "~@/styles/main";
 
-.vis-table-wrapper {
-  position: relative;
-  // overflow: auto;
-
-  .vis-table-main {
+  .vis-table-wrapper {
     position: relative;
-    overflow: auto;
-    min-height: 120px;
+    // overflow: auto;
+
+    .vis-table-main {
+      position: relative;
+      overflow: auto;
+      min-height: 120px;
+    }
+
+    .vis-table {
+      width: 100%;
+      border-radius: 4px;
+
+      thead {
+        th {
+          background-color: #f0f0f0;
+          // border-right: $border;
+          /* border-right: 1px solid #f3efef;
+
+          &:last-child {
+            border-right: none;
+          } */
+        }
+      }
+
+      th, td {
+        padding: 10px 18px;
+        border: 1px solid #eae4e4;
+        text-align: left;
+        white-space: nowrap;
+        font-size: 12px;
+      }
+    }
+
+    tr {
+      &:nth-child(2n-1) {
+
+      }
+
+      &:nth-child(2n) {
+        background-color: #f5f5f5;
+      }
+    }
+
+    .vis-table-loading {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255,255,255,.5);
+
+      .vis-spin-wrapper {
+        position: absolute;
+        left: 40%;
+        top: 40%;
+      }
+    }
   }
+</style>
 
-  .vis-table {
-    width: 100%;
-    border-radius: 4px;
-
-    thead {
-      th {
-        background-color: #f0f0f0;
-        // border-right: $border;
-        /* border-right: 1px solid #f3efef;
+<style lang="scss">
+  .vis-link-group {
+    &.vis-link-group--table {
+      .vis-link {
+        padding-right: 4px;
+        border-right: 1px solid #bbbbbb;
 
         &:last-child {
           border-right: none;
-        } */
-      }
-    }
-
-    th, td {
-      padding: 10px 18px;
-      border: 1px solid #eae4e4;
-      text-align: left;
-      white-space: nowrap;
-      font-size: 12px;
-    }
-  }
-
-  tr {
-    &:nth-child(2n-1) {
-
-    }
-
-    &:nth-child(2n) {
-      background-color: #f5f5f5;
-    }
-  }
-
-  .vis-table-loading {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255,255,255,.5);
-
-    .vis-spin-wrapper {
-      position: absolute;
-      left: 40%;
-      top: 40%;
-    }
-  }
-}
-
-:global {
-  .vis-table-link-group {
-    a {
-      padding-right: 4px;
-      border-right: 1px solid #bbbbbb;
-
-      &:last-child {
-        border-right: none;
+        }
       }
     }
   }
-}
 </style>

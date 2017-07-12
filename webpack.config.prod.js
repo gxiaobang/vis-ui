@@ -1,6 +1,5 @@
 /**
  * webpack打包配置（生产环境）
- * @author gxiaobang
  */
 
 const webpack = require('webpack');
@@ -12,7 +11,7 @@ const autoprefixer = require('autoprefixer');
 const path = require('path');
 const { version, srcPath, rootPath, distPath, publicPath } = require('./config/base.config');
 
-// 语言包
+// 本地化
 const locale = require('./i18n/locale');
 
 process.env.NODE_ENV = 'production';
@@ -24,9 +23,9 @@ module.exports = (env = {}) => {
   return ['zh-cn', 'en'].map((lang) => ({
     name: lang,
     entry: {
-      app: './src/app',
+      app: path.resolve(srcPath, './app'),
       // 第三方
-      vendor: ['vue', 'lodash', 'moment']
+      vendor: ['vue', 'element-ui', 'moment', 'axios']
     },
     output: {
       path: path.resolve(distPath, version),
@@ -35,15 +34,21 @@ module.exports = (env = {}) => {
       chunkFilename: '[name].[chunkhash:5].js'
     },
     resolve: {
-      extensions: ['.js', '.jsx', '.sass', '.scss'],
+      extensions: ['.js', '.vue', '.sass', '.scss'],
       // 简称
       alias: {
+        'vue$': 'vue/dist/vue.esm.js',
         '@': srcPath,
+        'vis-ui': path.resolve(srcPath, './components/vis-ui'),
         'config': path.resolve(rootPath, './config'),
       }
     },
     module: {
       rules: [
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+        },
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
@@ -78,13 +83,17 @@ module.exports = (env = {}) => {
         {
           test: /\.(png|jpg|gif)$/,
           use: ['url-loader?limit=25000']
+        },
+        {
+          test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+          use: ['url-loader']
         }
       ]
     },
     plugins: [
       // 独立css文件
       new ExtractTextPlugin({
-        filename: 'styles.css',
+        filename: 'styles.[chunkhash:5].css',
         disable: false,
         allChunks: true
       }),
@@ -97,7 +106,7 @@ module.exports = (env = {}) => {
 
       // 修改页面静态文件路径
       new HtmlWebpackPlugin({
-        title: 'Vis UI组件',
+        title: '东呈国际酒店集团',
         lang: lang,
         template: path.resolve(srcPath, './index.html'),
         filename: `index_${lang}.html`
@@ -111,7 +120,7 @@ module.exports = (env = {}) => {
         comments: false,
         compress: {
           warnings: false,
-          drop_console: false
+          drop_console: true
         }
       }),
 

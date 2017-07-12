@@ -1,13 +1,14 @@
 /**
- * http请求入口
+ * 请求入口
  */
 
 // import React from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 import api from 'config/api.config';
+import 'config/fetch.config';
 import mocks from '@/mocks';
-// import { Dialog } from '@/components';
+import Vis from 'vis-ui';
 
 let sysnames = Object.keys(api[NODE_REFER] || {});
 
@@ -23,17 +24,17 @@ const parameter = (options) => {
       options.baseURL = api.prod[ name ];
     }
   }
-  else {
+  /*else {
     if (sysnames.indexOf(name) > -1) {
       options.url = `/proxy${options.url}`;
     }
-  }
+  }*/
 
   return options;
 };
 
-const http = (options = {}) => {
-  const { baseURL = '/api', url, param } = options;
+const fetch = (options = {}) => {
+  const { baseURL = '/api', url } = options;
 
   // 开启mock
   if (NODE_REFER == 'mock') {
@@ -43,7 +44,7 @@ const http = (options = {}) => {
   let promise;
   // mock请求
   if (options.mock) {
-    promise = mocks(url, param);
+    promise = mocks(url, options.params, options.data);
   }
   else {
     promise = axios(parameter(options));
@@ -62,6 +63,8 @@ const http = (options = {}) => {
         if (message) {
           if (!_.isArray(message)) message = [message];
           // Dialog.alert(message.map((msg, index) => <div key={index}>{msg}</div>),  'warn');
+
+          Vis.Dialog.alert(message, 'warn');
         }
       }
     });
@@ -85,4 +88,4 @@ const http = (options = {}) => {
   return promise;
 };
 
-export default http;
+export default fetch;

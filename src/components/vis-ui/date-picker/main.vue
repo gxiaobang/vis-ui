@@ -1,8 +1,11 @@
 <template>
   <el-date-picker
+    class="vis-date-picker"
+    :disabled="formDisabled"
     v-bind="$props"
-    v-model="date"
+    v-model="val"
     size="small"
+    style="width: 172px"
     @change="handleChange"
   >
     <slot></slot>
@@ -10,6 +13,8 @@
 </template>
 <script>
   import { DatePicker } from 'element-ui';
+  import getParent from '@/utils/getParent';
+  import moment from 'moment';
 
   export default {
     name: 'vis-date-picker',
@@ -17,17 +22,44 @@
     props: ['value'],
     data() {
       return {
-        date: this.value
+        val: this.value ? moment(this.value) : null,
+        form: getParent(this, 'vis-form'),
+        validator: getParent(this, 'vis-validate', 1)
       }
     },
-    created() {
-      // console.log(this)
+    computed: {
+      formDisabled() {
+        if (this.form) {
+          return this.form.readonly/* || this.$props.disabled*/
+        }
+        else {
+          return null;
+        }
+      }
+    },
+    watch: {
+      value(val) {
+        this.val = val ? moment(val) : null;
+      }
     },
     methods: {
-      handleChange(date) {
-        // this.$emit('change', date)
-        this.$emit('input', date)
+      handleChange(val) {
+        // this.$emit('change', val)
+        this.$emit('input', val)
+
+        if (this.validator) {
+          this.validator.$emit('validate', val);
+        }
       }
     }
   }
 </script>
+
+<style lang="scss">
+  .vis-date-picker {
+    &.el-input.is-disabled .el-input__inner {
+      background-color: #f3f3f3;
+      cursor: default;
+    }
+  }
+</style>

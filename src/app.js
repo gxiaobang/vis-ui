@@ -10,21 +10,6 @@ Vue.config.productionTip = false
 
 Vue.prototype.$bus = new Vue;
 
-const Mount = {
-  template: `
-    <div class="mount">
-      <div v-for="item in data">
-        <component :is="item.name"></component>
-      </div>
-    </div>
-  `,
-  data() {
-    return {
-      data: [{ name: 'vis-dialog' }]
-    }
-  }
-}
-
 let vm = new Vue({
   el: '#app',
   router,
@@ -51,6 +36,5 @@ let vm = new Vue({
           this.view = view;
         })
     }
-  },
-  components: { Mount }
+  }
 })

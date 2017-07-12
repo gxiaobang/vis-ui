@@ -1,0 +1,25 @@
+@import "~@/styles/main";
+
+.vis-link {
+  margin: 2px;
+  color: $primary-color;
+  text-decoration: none;
+
+  &:hover {
+    // text-decoration: underline;
+    color: lighten($primary-color, 6%);
+  }
+
+  &.vis-link-danger {
+    color: $red;
+  }
+}
+
+.info-footer {
+  padding: 10px 112px;
+
+  button {
+    margin-right: 10px;
+    font-size: 14px;
+  }
+}
