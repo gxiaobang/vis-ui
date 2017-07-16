@@ -65,16 +65,7 @@ module.exports = (env = {}) => {
                   minimize: true
                 }
               },
-              {
-                loader: 'postcss-loader',
-                options: {
-                  plugins: () => {
-                    return [
-                      autoprefixer({ browsers: ['last 10 version'] })
-                    ]
-                  }
-                }
-              },
+              'postcss-loader',
               'sass-loader'
             ],
             // publicPath: publicPath

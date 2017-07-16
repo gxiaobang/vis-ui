@@ -28,6 +28,7 @@ export default {
 body {
   min-width: 800px;
   background-color: #e4e4e4;
+  display: flex;
   // overflow: hidden;
 }
 </style>

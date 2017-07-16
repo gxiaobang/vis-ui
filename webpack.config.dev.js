@@ -3,7 +3,6 @@
  */
 
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const I18nPlugin = require("i18n-webpack-plugin");
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
@@ -75,6 +74,7 @@ module.exports = (env = {}) => {
           use: [
             'style-loader',
             'css-loader?sourceMap',
+            'postcss-loader',
             'sass-loader?sourceMap'
           ]
         },
@@ -130,8 +130,8 @@ module.exports = (env = {}) => {
       host: '0.0.0.0',
       port: devPort,
       hot: true,
-      inline: true,
       quiet: true,
+      inline: true,
       compress: true,
       historyApiFallback: true,
       proxy: proxy
