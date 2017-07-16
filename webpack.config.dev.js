@@ -1,6 +1,5 @@
 /**
  * webpack打包配置（开发环境）
- * @author gxiaobang
  */
 
 const webpack = require('webpack');
@@ -9,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const I18nPlugin = require("i18n-webpack-plugin");
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 const path = require('path');
 const { devPort, rootPath, srcPath, lang } = require('./config/base.config');
@@ -94,6 +94,8 @@ module.exports = (env = {}) => {
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
 
+      new FriendlyErrorsPlugin(),
+
       // new ExtractTextPlugin('styles.css'),
 
       // 提取相同的文件
@@ -104,7 +106,7 @@ module.exports = (env = {}) => {
 
       // 修改页面静态文件路径
       new HtmlWebpackPlugin({
-        title: '东呈国际酒店集团',
+        title: 'Vis UI组件',
         lang: env.lang,
         template: path.resolve(srcPath, './index.html')
       }),
@@ -129,6 +131,7 @@ module.exports = (env = {}) => {
       port: devPort,
       hot: true,
       inline: true,
+      quiet: true,
       compress: true,
       historyApiFallback: true,
       proxy: proxy

@@ -6,9 +6,11 @@
       </vis-form-item>
 
       <vis-form-item label="选项">
-        <vis-select v-model="select">
-          <vis-option value="" label="全部"></vis-option>
+        <vis-select v-model="select" clearable multiple>
+          <!-- <vis-option value="" label="全部" disabled></vis-option> -->
           <vis-option value="1" label="选项一"></vis-option>
+          <vis-option value="2" label="选项二"></vis-option>
+          <vis-option value="3" label="选项三"></vis-option>
         </vis-select>
       </vis-form-item>
 
@@ -27,7 +29,7 @@
 export default {
   data() {
     return {
-      select: ''
+      select: []
     }
   }
 }

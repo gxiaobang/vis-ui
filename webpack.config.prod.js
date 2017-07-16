@@ -106,7 +106,7 @@ module.exports = (env = {}) => {
 
       // 修改页面静态文件路径
       new HtmlWebpackPlugin({
-        title: '东呈国际酒店集团',
+        title: 'Vis UI组件',
         lang: lang,
         template: path.resolve(srcPath, './index.html'),
         filename: `index_${lang}.html`

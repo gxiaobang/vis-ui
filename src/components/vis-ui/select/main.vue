@@ -10,12 +10,12 @@
 
   <el-select
     class="vis-select"
-    ref="reference"
+    ref="select"
     :disabled="formDisabled"
     v-bind="$props"
     v-model="val"
     size="small"
-    style="width: 172px"
+    style="width: 172px;"
     @change="handleChange"
   >
     <slot></slot>
@@ -49,8 +49,8 @@
       }
     },
     mounted() {
-      // console.log(this.readonly)
-      // console.log(this.$props)
+      // 修正refs指向
+      this.$refs = this.$refs.select.$refs;
     },
     watch: {
       value(val) {
