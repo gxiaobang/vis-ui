@@ -43,11 +43,11 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
  /**
   * 多行文本框
   */
-  @import "~@/styles/main";
+  @import "~@/styles/base";
 
   .vis-textarea {
     width: 770px;

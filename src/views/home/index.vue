@@ -1,34 +1,36 @@
 <template>
   <div class="home">
-    <h3>Vis UI组件</h3>
-    <router-view></router-view>
+    <page-header></page-header>
+    <page-content></page-content>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      select: ''
+  import PageHeader from '@/layouts/header';
+  import PageContent from '@/layouts/content';
+  export default {
+    data() {
+      return {
+      }
+    },
+    components: {
+      PageHeader, PageContent
     }
   }
-}
 </script>
 
 <style lang="scss">
-/**
- * 主页
- */
+  /**
+   * 主页
+   */
 
-@import "~normalize.css";
-@import "~@/styles/normalize-addon";
-// @import "~animate.css";
+  @import "~normalize.css";
+  @import "~@/styles/normalize-addon";
+  // @import "~animate.css";
 
 
-body {
-  min-width: 800px;
-  background-color: #e4e4e4;
-  display: flex;
-  // overflow: hidden;
-}
+  body {
+    min-width: 600px;
+    background-color: #e4e4e4;
+  }
 </style>

@@ -3,16 +3,14 @@ import Element from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
 
 import components from '@/components/vis-ui';
-import router from '@/router';
 
 Vue.use(Element)
 Vue.config.productionTip = false
 
-Vue.prototype.$bus = new Vue;
+Vue.prototype.$store = new Vue;
 
 let vm = new Vue({
   el: '#app',
-  router,
   data() {
     return {
       view: null

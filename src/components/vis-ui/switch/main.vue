@@ -55,7 +55,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/main";
+  @import "~@/styles/base";
 
   .vis-switch {
     display: inline-block;

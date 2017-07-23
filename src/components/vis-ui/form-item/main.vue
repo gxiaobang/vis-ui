@@ -46,7 +46,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/main";
+  @import "~@/styles/base";
   // 表单元素
   .vis-form-item {
     display: inline-block;

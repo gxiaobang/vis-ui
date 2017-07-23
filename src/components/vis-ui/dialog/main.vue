@@ -72,7 +72,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/main";
+  @import "~@/styles/base";
 
   .vis-dialog-wrapper {
     position: fixed;
@@ -156,16 +156,16 @@
       // 图标
       .vis-dialog--icon-warn {
         // fill: $warn-color;
-        fill: #ff0000;
+        color: #ff0000;
       }
       .vis-dialog--icon-success {
-        fill: $success-color;
+        color: $success-color;
       }
       .vis-dialog--icon-info {
-        fill: $primary-color;
+        color: $primary-color;
       }
       .vis-dialog--icon-error {
-        fill: $danger-color;
+        color: $danger-color;
       }
 
       .vis-dialog--header {

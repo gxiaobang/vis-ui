@@ -56,7 +56,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/main";
+  @import "~@/styles/base";
   .vis-input {
     width: 172px;
     height: 30px;

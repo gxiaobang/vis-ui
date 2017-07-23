@@ -75,7 +75,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/main";
+  @import "~@/styles/base";
   .vis-select {
     /* width: 162px;
     height: 28px;

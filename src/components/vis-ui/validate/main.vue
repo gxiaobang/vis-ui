@@ -69,7 +69,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/main";
+  @import "~@/styles/base";
 
   .vis-validate {
     height: 48px;

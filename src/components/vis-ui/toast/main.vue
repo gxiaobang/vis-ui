@@ -21,8 +21,8 @@
   }
 </script>
 
-<style lang="scss" scoped>
-  @import "~@/styles/main";
+<style lang="scss">
+  @import "~@/styles/base";
   .vis-toast {
     position: fixed;
     left: 50%;

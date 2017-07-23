@@ -28,7 +28,7 @@ const router = {
 		}
 	},
 
-	// 获取地址	
+	// 获取地址
 	getURL(url) {
 		// let url;
 
@@ -48,7 +48,7 @@ const router = {
 	// 获取views路径
 	getPageURL(url) {
 		// return url.replace(/^\//, '').replace(/\?(\w|\/|=){0,}/, '');
-		return parseURL(url).pathname.replace(/^\//, '');
+		return parseURL(url).pathname.replace(/^\/(v\/)?/, '');
 	},
 
 	// 获取路径参数

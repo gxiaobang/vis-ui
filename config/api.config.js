@@ -1,4 +1,3 @@
-
 module.exports = {
   // 本地环境
   "local": {

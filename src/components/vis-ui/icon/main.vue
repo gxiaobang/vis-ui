@@ -5,8 +5,7 @@
 </template>
 
 <script>
-  // import fileURL from 'file-loader?name=[hash:5].[ext]!./symbols/lib/svg-symbols.svg';
-  import './iconfont/iconfont.js';
+  import './fonts/iconfont.js';
   export default {
     name: 'vis-icon',
     props: {

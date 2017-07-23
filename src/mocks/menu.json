@@ -1,25 +1,34 @@
 {
   "data": [
     {
-      "title": "集团信息", "url": "/basedata/enterprise/index", "code": "enterprise"
+      "title": "弹窗", "url": "/v/dialog/index", "code": "dialog"
     },
     {
-      "title": "品牌信息", "url": "/basedata/brand/index", "code": "brand"
+      "title": "消息", "url": "/message/index", "code": "message"
     },
     {
-      "title": "酒店信息", "url": "/basedata/hotel/index", "code": "hotel"
-    },
-	  {
-      "title": "房型信息", "url": "/basedata/roomType/index", "code": "roomType"
+      "title": "标签页", "url": "/tabs/index", "code": "tabs"
     },
     {
-      "title": "基础参数", "url": "/basedata/basicParam/index", "code": "basicParam"
+      "title": "表格", "url": "/table/index", "code": "table"
     },
     {
-      "title": "用户管理", "url": "/arm/user/index", "code": "user"
+      "title": "分页", "url": "/pagination/index", "code": "pagination"
     },
     {
-      "title": "测试页面", "url": "/test/index", "code": "test"
+      "title": "按钮", "url": "/button/index", "code": "button"
+    },
+    {
+      "title": "加载中", "url": "/spin/index", "code": "spin"
+    },
+    {
+      "title": "日历", "url": "/calendar/index", "code": "calendar"
+    },
+    {
+      "title": "表单", "url": "/form/index", "code": "form"
+    },
+    {
+      "title": "开关", "url": "/switch/index", "code": "switch"
     }
   ]
-} 
+}

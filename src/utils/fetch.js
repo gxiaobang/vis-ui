@@ -6,7 +6,7 @@
 import axios from 'axios';
 import _ from 'lodash';
 import api from 'config/api.config';
-import 'config/fetch.config';
+// import 'config/fetch.config';
 import mocks from '@/mocks';
 import Vis from 'vis-ui';
 

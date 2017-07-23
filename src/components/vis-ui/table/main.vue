@@ -104,7 +104,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/main";
+  @import "~@/styles/base";
 
   .vis-table-wrapper {
     position: relative;
