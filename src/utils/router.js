@@ -24,7 +24,7 @@ const router = {
 			history.pushState(null, null, url);
 		}
 		else {
-			location.hash = url ? ('#!' + url) : '';
+			location.hash = url ? ('#' + url) : '';
 		}
 	},
 
@@ -40,7 +40,7 @@ const router = {
 				return location.pathname;
 			}
 			else {
-				return location.hash.replace(/^#!/, '');
+				return location.hash.replace(/^#/, '');
 			}
 		}
 	},
@@ -48,7 +48,7 @@ const router = {
 	// 获取views路径
 	getPageURL(url) {
 		// return url.replace(/^\//, '').replace(/\?(\w|\/|=){0,}/, '');
-		return parseURL(url).pathname.replace(/^\/(v\/)?/, '');
+		return parseURL(url).pathname.replace(/^\//, '');
 	},
 
 	// 获取路径参数
@@ -63,7 +63,7 @@ const router = {
 				param = location.search.replace(/^\?/, '');
 			}
 			else {
-				param = location.hash.replace(/^#!(\w|\/)+\??/, '');
+				param = location.hash.replace(/^#(\w|\/)+\??/, '');
 			}
 		}
 
@@ -89,7 +89,8 @@ const router = {
 
 	// 支持h5 history
 	isSuport() {
-		return 'state' in history;
+		// return 'state' in history;
+    return false;
 	}
 };
 

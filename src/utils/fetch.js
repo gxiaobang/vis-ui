@@ -6,7 +6,7 @@
 import axios from 'axios';
 import _ from 'lodash';
 import api from 'config/api.config';
-// import 'config/fetch.config';
+import 'config/fetch.config';
 import mocks from '@/mocks';
 import Vis from 'vis-ui';
 
@@ -64,7 +64,7 @@ const fetch = (options = {}) => {
           if (!_.isArray(message)) message = [message];
           // Dialog.alert(message.map((msg, index) => <div key={index}>{msg}</div>),  'warn');
 
-          Vis.Dialog.alert(message, 'warn');
+          Vis.Dialog.alert(message.join('；'), 'warn');
         }
       }
     });

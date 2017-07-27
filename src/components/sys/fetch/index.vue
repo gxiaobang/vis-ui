@@ -41,6 +41,10 @@
             this.rendered = false;
           }
         })
+      },
+      // 重新加载
+      reload() {
+        this.request();
       }
     }
   }

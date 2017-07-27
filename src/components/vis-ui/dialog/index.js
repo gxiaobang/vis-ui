@@ -77,6 +77,28 @@ Object.assign(Component, {
       }
     });
   },
+  confirm(content, icon, onOk) {
+    add({
+      type: 'confirm',
+      title: '提示框',
+      content, icon,
+      onOk,
+      footer: {
+        template: `
+          <div>
+            <vis-button type="primary" @click="handleClick">确定</vis-button>
+            <vis-button type="default" @click="handleClick">取消</vis-button>
+          </div>
+        `,
+        methods: {
+          handleClick() {
+            // console.log('确定')
+            Component.close();
+          }
+        }
+      }
+    });
+  },
   // 打开页面
   open({ url, title }) {
     let route = router.getLocation(url);

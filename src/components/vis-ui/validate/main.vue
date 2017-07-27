@@ -14,7 +14,7 @@
   export default {
     name: 'vis-validate',
     props: {
-      rule: String,
+      rules: String,
       name: String
     },
     data() {
@@ -46,7 +46,7 @@
         // console.log(this)
         var validation = new Validator(
           { [this.label]: val },
-          { [this.label]: this.rule }
+          { [this.label]: this.rules }
         );
 
         if (validation.fails()) {

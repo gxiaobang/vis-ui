@@ -1,7 +1,7 @@
 <template>
   <div class="region">
     <!-- 省 -->
-    <fetch :get="fetch">
+    <fetch :get="fetch" @ready="initReady">
       <template scope="scope">
         <vis-select v-model="province" @change="handleChange('city', province)" style="width: 100px;">
           <vis-option
@@ -46,9 +46,9 @@
       return {
         cityData: [],
         districtData: [],
-        province: null,
-        city: null,
-        district: null,
+        province: this.value.province,
+        city: this.value.city,
+        district: this.value.district,
 
         fetch: {
           url,
@@ -60,9 +60,12 @@
       }
     },
     props: {
-      value: Object
+      value: {
+        type: Object,
+        default: {}
+      }
     },
-   /* watch: {
+    watch: {
       province(val) {
         this.value.province = val;
       },
@@ -72,10 +75,11 @@
       district(val) {
         this.value.district = val;
       }
-    },*/
+    },
     components: { Fetch },
     methods: {
-      handleChange(type, value) {
+      // 请求
+      request(type, value, ready) {
         this.$fetch({
           url,
           params: {
@@ -83,7 +87,14 @@
             lv: type
           },
           onSuccess: (data) => {
-            this.district = '';
+            ready && ready(data);
+          }
+        })
+      },
+
+      handleChange(type, value) {
+        this.request(type, value, (data) => {
+          this.district = '';
             switch (type) {
               case 'city':
                 this.city = '';
@@ -94,7 +105,18 @@
                 this.districtData = data.data;
                 break;
             }
-          }
+        });
+      },
+
+      initReady() {
+        this.$nextTick(() => {
+          this.request('city', this.province, (data) => {
+            this.cityData = data.data;
+
+            this.request('area', this.city, (data) => {
+              this.districtData = data.data;
+            })
+          })
         })
       }
     }

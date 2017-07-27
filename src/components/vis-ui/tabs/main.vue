@@ -4,8 +4,8 @@
 </template>
 
 <script>
-  export default {
-    name: 'vis-tabs',
+export default {
+  name: 'vis-tabs',
 
-  }
+}
 </script>

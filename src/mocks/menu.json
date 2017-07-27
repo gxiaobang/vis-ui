@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "title": "弹窗", "url": "/v/dialog/index", "code": "dialog"
+      "title": "弹窗", "url": "/dialog/index", "code": "dialog"
     },
     {
       "title": "消息", "url": "/message/index", "code": "message"

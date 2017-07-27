@@ -100,6 +100,7 @@
       border-radius: 4px;
       background-color: $white;
       box-shadow: 0 0 6px #ccc;
+      overflow: hidden;
 
       &.vis-dialog-disabled:after {
         content: "";
