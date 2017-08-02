@@ -51,23 +51,7 @@ const fetch = (options = {}) => {
   }
 
   if (_.isFunction(options.onSuccess)) {
-    promise.then(response => {
-      const data = response.data;
-
-      // 请求成功
-      if (data.code == 'SUCCESS') {
-        options.onSuccess(data);
-      }
-      else {
-        let message = data.message;
-        if (message) {
-          if (!_.isArray(message)) message = [message];
-          // Dialog.alert(message.map((msg, index) => <div key={index}>{msg}</div>),  'warn');
-
-          Vis.Dialog.alert(message.join('；'), 'warn');
-        }
-      }
-    });
+    promise.then(fetch.succ(options.onSuccess));
   }
 
   if (_.isFunction(options.onComplete)) {
@@ -87,5 +71,36 @@ const fetch = (options = {}) => {
 
   return promise;
 };
+
+fetch.succ = (callback) => {
+  return (response) => {
+    let data = { response };
+
+    // 操作成功
+    if (data.code == 'SUCCESS') {
+      callback && callback(data);
+    }
+    // 用户过期
+    else if (data.code == 'AUTH') {
+
+    }
+    else {
+      let message = data.message;
+      if (message) {
+        if (!_.isArray(message)) message = [message];
+        // Dialog.alert(message.map((msg, index) => <div key={index}>{msg}</div>),  'warn');
+
+        Vis.Dialog.alert(message.join('；'), 'warn');
+      }
+    }
+  }
+}
+
+fetch({
+  url: 'xxx',
+  params: {}
+}).then(fetch.succ(data => {
+  
+}))
 
 export default fetch;
