@@ -96,11 +96,11 @@ fetch.succ = (callback) => {
   }
 }
 
-fetch({
-  url: 'xxx',
-  params: {}
-}).then(fetch.succ(data => {
-  
-}))
+// fetch({
+//   url: 'xxx',
+//   params: {}
+// }).then(fetch.succ(data => {
+
+// }))
 
 export default fetch;

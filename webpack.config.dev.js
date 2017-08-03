@@ -100,7 +100,7 @@ module.exports = (env = {}) => {
 
       // 提取相同的文件
       new webpack.optimize.CommonsChunkPlugin({
-        names: ['vendor', 'common'],
+        names: ['vendor'],
         minChunks: 5
       }),
 

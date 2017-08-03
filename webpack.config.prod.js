@@ -9,7 +9,7 @@ const I18nPlugin = require("i18n-webpack-plugin");
 const autoprefixer = require('autoprefixer');
 
 const path = require('path');
-const { version, srcPath, rootPath, distPath, publicPath } = require('./config/base.config');
+const { srcPath, rootPath, distPath, publicPath } = require('./config/base.config');
 
 // 本地化
 const locale = require('./i18n/locale');
@@ -28,10 +28,10 @@ module.exports = (env = {}) => {
       vendor: ['vue', 'element-ui', 'moment', 'axios']
     },
     output: {
-      path: path.resolve(distPath, version),
+      path: distPath,
       publicPath: publicPath,
-      filename: '[name].[chunkhash:5].js',
-      chunkFilename: '[name].[chunkhash:5].js'
+      filename: 'static/js/[name].[chunkhash:5].js',
+      chunkFilename: 'static/js/[name].[chunkhash:5].js'
     },
     resolve: {
       extensions: ['.js', '.vue', '.sass', '.scss'],
@@ -79,14 +79,14 @@ module.exports = (env = {}) => {
     plugins: [
       // 独立css文件
       new ExtractTextPlugin({
-        filename: 'styles.[chunkhash:5].css',
+        filename: 'static/css/app.[chunkhash:5].css',
         disable: false,
         allChunks: true
       }),
 
       // 提取相同的文件
       new webpack.optimize.CommonsChunkPlugin({
-        names: ['vendor', 'common'],
+        names: ['vendor'],
         minChunks: 5
       }),
 
@@ -95,7 +95,16 @@ module.exports = (env = {}) => {
         title: 'Vis UI组件',
         lang: lang,
         template: path.resolve(srcPath, './index.html'),
-        filename: `index_${lang}.html`
+        filename: `index_${lang}.html`,
+        minify: {
+          removeComments: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true
+          // more options:
+          // https://github.com/kangax/html-minifier#options-quick-reference
+        },
+        // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+        chunksSortMode: 'dependency'
       }),
 
       new I18nPlugin(locale.use(lang)),
