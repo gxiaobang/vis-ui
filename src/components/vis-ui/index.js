@@ -23,9 +23,10 @@ import DatePicker from './date-picker';
 import Textarea from './textarea';
 import Validate from './validate';
 import Switch from './switch';
+import Tabs from './tabs';
 
 const components = {
-  Icon, Spin, Button, Input, InputNumber, Form, FormItem, FormItemGroup, Checkbox, CheckboxGroup, Select, Option, Toast, Table, Dialog, Pagination,  DatePicker, Textarea, Validate, Switch
+  Icon, Spin, Button, Input, InputNumber, Form, FormItem, FormItemGroup, Checkbox, CheckboxGroup, Select, Option, Toast, Table, Dialog, Pagination,  DatePicker, Textarea, Validate, Switch, Tabs
 };
 
 for (let key in components) {

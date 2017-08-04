@@ -20,19 +20,10 @@ let vm = new Vue({
     // console.log('ready')
 
     // 主页
-    if (window.location.pathname == '/login') {
-      import('@/views/login')
-        .then((view) => {
-          // console.log(view)
-          this.view = view;
-        })
-    }
-    else {
-      import('@/views/home')
-        .then((view) => {
-          // console.log(view)
-          this.view = view;
-        })
-    }
+    import('@/views/home')
+      .then((view) => {
+        // console.log(view)
+        this.view = view;
+      })
   }
 })

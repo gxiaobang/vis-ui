@@ -6,6 +6,8 @@
     v-bind="$props"
     @input="handleInput"
     @keyup="handleKeyUp"
+    @focus="handleFocus"
+    @blur="handleBlur"
   >
 </template>
 
@@ -50,7 +52,13 @@
       },
       handleKeyUp(event) {
         this.$emit('keyup', event);
-      }
+      },
+      handleFocus(event) {
+        this.$emit('focus', event);
+      },
+      handleBlur(event) {
+        this.$emit('blur', event);
+      },
     }
   }
 </script>

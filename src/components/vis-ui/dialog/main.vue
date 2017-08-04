@@ -214,7 +214,7 @@
 
         text-align: center;
 
-        .button {
+        button {
           margin: 0 4px;
           font-size: 14px;
         }

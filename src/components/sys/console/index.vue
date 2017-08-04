@@ -1,8 +1,9 @@
-<template>
-  <slot></slot>
-</template>
 
 <script>
+  /**
+   * 调试输出
+   */
+
   export default {
     data() {
       return {
