@@ -2,7 +2,8 @@
   <div class="menu">
     <ul>
       <li
-        v-for="item of items"
+        v-for="(item,key) of items"
+        :key="key"
         :class="{ active: currentItem.url === item.url }"
         @click="handleClick(item)"
       >
@@ -25,9 +26,12 @@
       }
     },
     watch: {
-      currentItem(value) {
-        // console.log(value)
-        this.$store.$emit('loadPage', value)
+      currentItem(item) {
+        // console.log(item)
+
+        if (item.url) {
+          this.$store.$emit('loadPage', item)
+        }
       }
     },
     mounted() {

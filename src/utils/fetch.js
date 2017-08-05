@@ -74,7 +74,7 @@ const fetch = (options = {}) => {
 
 fetch.succ = (callback) => {
   return (response) => {
-    let data = { response };
+    let { data } = response;
 
     // 操作成功
     if (data.code == 'SUCCESS') {
