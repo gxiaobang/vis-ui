@@ -10,6 +10,9 @@
 </template>
 
 <script>
+/**
+ * Tabs 选项卡组件
+ */
 export default {
   name: 'vis-tabs',
   data() {

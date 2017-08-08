@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <h3>{{ title }}</h3>
-    <vis-form>
+    <vis-form inline>
       <vis-form-item label="消息">
         <vis-input
           v-model="form.input"
@@ -24,7 +24,7 @@
   export default {
     data() {
       return {
-        title: '消息组件',
+        title: 'Message 消息',
         form: {
           input: '我是消息内容'
         },

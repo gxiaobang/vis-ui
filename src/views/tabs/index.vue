@@ -11,7 +11,7 @@
   export default {
     data() {
       return {
-        title: '选项卡组件',
+        title: 'Tabs 选项卡',
         form: {
           input: '我是消息内容'
         },

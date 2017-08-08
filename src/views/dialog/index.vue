@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h3>弹窗组件</h3>
+    <h3>{{ title }}</h3>
     <p>
       <vis-button @click="handleAlert">Alert</vis-button>
     </p>
@@ -12,19 +12,21 @@
 </template>
 
 <script>
-  import Dialog from 'vis-ui/dialog';
+import Dialog from 'vis-ui/dialog';
 
-  export default {
-    data() {
-      return {}
+export default {
+  data() {
+    return {
+      title: 'Dialog 弹窗'
+    }
+  },
+  methods: {
+    handleAlert() {
+      Dialog.alert('我是Alert框', 'warn')
     },
-    methods: {
-      handleAlert() {
-        Dialog.alert('我是Alert框', 'warn')
-      },
-      handleConfirm() {
-        Dialog.confirm('我是Confirm框', 'warn')
-      }
+    handleConfirm() {
+      Dialog.confirm('我是Confirm框', 'warn')
     }
   }
+}
 </script>

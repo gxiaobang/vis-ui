@@ -6,31 +6,27 @@
 </template>
 
 <script>
-  import PageHeader from '@/layouts/header';
-  import PageContent from '@/layouts/content';
-  export default {
-    data() {
-      return {
-      }
-    },
-    components: {
-      PageHeader, PageContent
+/**
+ * 主页
+ */
+import PageHeader from '@/layouts/header';
+import PageContent from '@/layouts/content';
+export default {
+  data() {
+    return {
     }
+  },
+  components: {
+    PageHeader, PageContent
   }
+}
 </script>
 
 <style lang="scss">
-  /**
-   * 主页
-   */
-
-  @import "~normalize.css";
-  @import "~@/styles/normalize-addon";
-  // @import "~animate.css";
-
-
-  body {
-    min-width: 600px;
-    background-color: #e4e4e4;
-  }
+@import "~normalize.css";
+@import "~@/styles/normalize-addon"; // @import "~animate.css";
+body {
+  min-width: 600px;
+  background-color: #e4e4e4;
+}
 </style>
