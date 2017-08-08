@@ -5,6 +5,7 @@
     "dev:test": "webpack-dev-server --config webpack.config.dev.js --progress --colors --env.refer=test",
     "dev:mock": "webpack-dev-server --config webpack.config.dev.js --progress --colors --env.refer=mock",
     "build": "webpack --config webpack.config.prod.js --progress --colors",
+    "archive": "gulp archive",
     "server": "node server.js",
     "clean": "rm dist -rf"
   },
