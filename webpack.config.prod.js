@@ -52,7 +52,7 @@ module.exports = (env = {}) => {
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: ['babel-loader']
+          loader: 'babel-loader'
         },
         {
           test: /\.(css|scss)$/,
@@ -67,12 +67,20 @@ module.exports = (env = {}) => {
           })
         },
         {
-          test: /\.(png|jpg|gif)$/,
-          use: ['url-loader?limit=25000']
+          test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            name: 'static/img/[name].[hash:5].[ext]'
+          }
         },
         {
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-          use: ['url-loader']
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            name: 'static/fonts/[name].[hash:5].[ext]'
+          }
         }
       ]
     },

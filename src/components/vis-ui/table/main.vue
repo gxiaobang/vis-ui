@@ -31,7 +31,7 @@
 
       <img
         v-if="!loading && data.length == 0"
-        :src="require('url-loader!@/images/kongshuju.svg')"
+        :src="require('@/images/kongshuju.svg')"
         alt="empty"
         style="max-height: 600px;"
       >

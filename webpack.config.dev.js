@@ -67,7 +67,7 @@ module.exports = (env = {}) => {
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: ['babel-loader']
+          loader: 'babel-loader'
         },
         {
           test: /\.(css|scss)$/,
@@ -79,12 +79,12 @@ module.exports = (env = {}) => {
           ]
         },
         {
-          test: /\.(png|jpg|gif)$/,
-          use: ['url-loader?limit=25000']
+          test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+          loader: 'url-loader?limit=10000'
         },
         {
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-          use: ['url-loader']
+          loader: 'url-loader?limit=10000'
         }
       ]
     },
