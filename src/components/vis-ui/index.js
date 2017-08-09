@@ -1,5 +1,5 @@
 /**
- * 安装到Vue.component
+ * 组件全局注册
  */
 
 import Vue from 'vue';
