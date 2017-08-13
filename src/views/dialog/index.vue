@@ -4,7 +4,6 @@
     <p>
       <vis-button @click="handleAlert">Alert</vis-button>
     </p>
-
     <p>
       <vis-button @click="handleConfirm">Confirm</vis-button>
     </p>

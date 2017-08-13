@@ -11,12 +11,6 @@ const distPath = path.resolve(rootPath, './dist');
 const publicPath = '/';
 
 module.exports = {
-	// 版本号
-	version: '1.0.0',
-	// 端口号
-	port: 8000,
-	// 开发端口号
-	devPort: 3000,
 	// 语言
 	lang: 'zh-cn',
 	// 根路径

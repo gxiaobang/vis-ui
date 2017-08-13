@@ -17,11 +17,11 @@ export default {
       data: [],
       columns: [
         {
-          title: '编码',
+          title: this.$t('common.code'),
           key: 'code'
         },
         {
-          title: '名称',
+          title: this.$t('common.name'),
           key: 'name'
         }
       ],

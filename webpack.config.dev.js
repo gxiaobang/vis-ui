@@ -1,140 +1,125 @@
 /**
- * webpack打包配置（开发环境）
+ * 编译配置（开发环境）
  */
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const I18nPlugin = require("i18n-webpack-plugin");
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-const autoprefixer = require('autoprefixer');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 const path = require('path');
-const { devPort, rootPath, srcPath, lang } = require('./config/base.config');
-const api = require('./config/api.config');
+const { rootPath, srcPath } = require('./config/base.conf');
+const proxyTable = require('./config/proxy.conf');
 
-// 本地化
-const locale = require('./i18n/locale');
+const argv = require('yargs')
+  .option('proxy', {
+    default: 'dev'
+  })
+  .option('port', {
+    alias: 'p',
+    default: 8000
+  })
+  .argv
 
-
-module.exports = (env = {}) => {
-  // console.log(env)
-
-  env.refer = env.refer || 'dev';
-  env.lang = env.lang || lang;
-
-  // 代理
-  const proxy = {};
-  for (let key in api[env.refer]) {
-    proxy['/' + key] = {
-      target: api[env.refer][key],
-      secure: false
+module.exports = {
+  // cheap-module-eval-source-map is faster for development
+  devtool: '#cheap-module-eval-source-map',
+  entry: {
+    app: path.resolve(srcPath, './app'),
+    // 第三方
+    vendor: ['vue', 'element-ui', 'moment', 'axios']
+  },
+  output: {
+    filename: '[name].js',
+    publicPath: '/'
+  },
+  resolve: {
+    extensions: ['.js', '.vue', '.sass', '.scss', '.json'],
+    // 简称
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': srcPath,
+      'vis-ui': path.resolve(srcPath, './components/vis-ui'),
+      'config': path.resolve(rootPath, './config'),
     }
-  }
+  },
 
-  return {
-    name: env.lang,
-    // cheap-module-eval-source-map is faster for development
-    devtool: '#cheap-module-eval-source-map',
-    entry: {
-      app: path.resolve(srcPath, './app'),
-      // 第三方
-      vendor: ['vue', 'element-ui', 'moment', 'axios']
-    },
-    output: {
-      filename: '[name].js',
-      publicPath: '/'
-    },
-    resolve: {
-      extensions: ['.js', '.vue', '.sass', '.scss'],
-      // 简称
-      alias: {
-        'vue$': 'vue/dist/vue.esm.js',
-        '@': srcPath,
-        'vis-ui': path.resolve(srcPath, './components/vis-ui'),
-        'config': path.resolve(rootPath, './config'),
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.(css|scss)$/,
+        use: [
+          'style-loader',
+          'css-loader?sourceMap',
+          'postcss-loader',
+          'sass-loader?sourceMap'
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader?limit=10000'
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader?limit=10000'
       }
-    },
-    /*externals: {
-      requirejs: 'window.requirejs'
-    },*/
-    module: {
-      rules: [
-        {
-          test: /\.vue$/,
-          loader: 'vue-loader',
-        },
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader'
-        },
-        {
-          test: /\.(css|scss)$/,
-          use: [
-            'style-loader',
-            'css-loader?sourceMap',
-            'postcss-loader',
-            'sass-loader?sourceMap'
-          ]
-        },
-        {
-          test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-          loader: 'url-loader?limit=10000'
-        },
-        {
-          test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-          loader: 'url-loader?limit=10000'
-        }
-      ]
-    },
-    plugins: [
+    ]
+  },
 
-      // 热更新
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NamedModulesPlugin(),
+  stats: "errors-only",
 
-      new FriendlyErrorsPlugin(),
+  plugins: [
 
-      // new ExtractTextPlugin('styles.css'),
+    // 热更新
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
 
-      // 提取相同的文件
-      new webpack.optimize.CommonsChunkPlugin({
-        names: ['vendor'],
-        minChunks: 5
-      }),
+    new FriendlyErrorsPlugin(),
 
-      // 修改页面静态文件路径
-      new HtmlWebpackPlugin({
-        title: 'Vis UI组件',
-        lang: env.lang,
-        template: path.resolve(srcPath, './index.html')
-      }),
+    // new ExtractTextPlugin('styles.css'),
 
-      // 浏览器打开地址
-      new OpenBrowserPlugin({
-        url: `http://localhost:${devPort}`
-      }),
+    // 提取相同的文件
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor'],
+      minChunks: 5
+    }),
 
-      new I18nPlugin(locale.use(env.lang)),
+    // 修改页面静态文件路径
+    new HtmlWebpackPlugin({
+      title: 'Vis UI组件',
+      template: path.resolve(srcPath, './index.html')
+    }),
 
-      // 自定义参数
-      new webpack.DefinePlugin({
-        'NODE_REFER': JSON.stringify(env.refer)
-      })
-    ],
+    // 浏览器打开地址
+    new OpenBrowserPlugin({
+      url: 'http://localhost:' + argv.port
+    }),
 
-    // 代理服务器
-    devServer: {
-      contentBase: srcPath,
-      host: '0.0.0.0',
-      port: devPort,
-      hot: true,
-      quiet: true,
-      inline: true,
-      compress: true,
-      historyApiFallback: true,
-      proxy: proxy
-    }
-  };
+    // 自定义参数
+    new webpack.DefinePlugin({
+      NODE_REFER: JSON.stringify(argv.proxy)
+    })
+  ],
+
+  // 代理服务器
+  devServer: {
+    contentBase: srcPath,
+    host: '0.0.0.0',
+    port: argv.port,
+    hot: true,
+    noInfo: true,
+    inline: true,
+    compress: true,
+    historyApiFallback: true,
+    proxy: proxyTable[argv.proxy]
+  }
 }

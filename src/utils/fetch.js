@@ -5,12 +5,12 @@
 // import React from 'react';
 import axios from 'axios';
 import _ from 'lodash';
-import api from 'config/api.config';
-import 'config/fetch.config';
+import proxyTable from 'config/proxy.conf';
+import 'config/fetch.conf';
 import mocks from '@/mocks';
 import Vis from 'vis-ui';
 
-let sysnames = Object.keys(api[NODE_REFER] || {});
+let sysnames = Object.keys(proxyTable[NODE_REFER] || {});
 
 // console.log(sysnames)
 

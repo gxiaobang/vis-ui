@@ -1,5 +1,5 @@
 /**
- * 请求代理
+ * 静态服务器
  */
 
 const express = require('express');
@@ -9,34 +9,39 @@ const opn = require('opn');
 const app = express();
 const path = require('path');
 
-const { version, port, distPath } = require('./config/base.config');
-const api = require('./config/api.config');
+const argv = require('yargs')
+  .option('proxy', {
+    default: 'dev'
+  })
+  .option('port', {
+    alias: 'p',
+    default: 8080
+  })
+  .option('open', {
+    alias: 'o',
+    default: false
+  })
+  .argv;
 
 // 接口代理
-for (let key in api.dev) {
-  if (api.dev[ key ]) {
-    console.log('proxy: ' + '/' + key);
-    app.use('/' + key, proxy({
-      target: api.dev[ key ], // 代理服务的地址,
-      changeOrigin: true
-    }));
-  }
+const proxyTable = require('./config/proxy.conf');
+for (let key in proxyTable[argv.proxy]) {
+  app.use('/' + key, api[argv.proxy][ key ]);
 }
 
 // 静态文件
-app.use(express.static(distPath));
+app.use(express.static('./dist'));
 
-// 重定向到主页
-app.get('*', (req, res) => {
-  // console.log(req.query)
-  let { lang = 'zh-cn' } = req.query;
-  res.sendFile(`${distPath}/index_${lang}.html`);
-});
+// handle fallback for HTML5 history API
+// app.use(require('connect-history-api-fallback'))
 
 
 // 监听port端口
-app.listen(port, '0.0.0.0', (err) => {
+app.listen(argv.port, '0.0.0.0', (err) => {
   if (err) throw err;
-  console.log(`Listening at http://localhost:${port}`);
-  opn(`http://localhost:${port}`);
+  console.log(`> Listening at http://localhost:${argv.port}`);
+
+  if (argv.open) {
+    opn(`http://localhost:${argv.port}`);
+  }
 });

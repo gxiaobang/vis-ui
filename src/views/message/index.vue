@@ -2,7 +2,7 @@
   <div class="page">
     <h3>{{ title }}</h3>
     <vis-form inline>
-      <vis-form-item label="消息">
+      <vis-form-item :label="$t('common.message')">
         <vis-input
           v-model="form.input"
           @focus="handleFocus"
