@@ -1,9 +1,9 @@
 {
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.dev.js --progress",
-    "dev:local": "webpack-dev-server --config webpack.config.dev.js --progress --env.refer=local",
-    "dev:test": "webpack-dev-server --config webpack.config.dev.js --progress --env.refer=test",
-    "dev:mock": "webpack-dev-server --config webpack.config.dev.js --progress --env.refer=mock",
+    "dev:local": "webpack-dev-server --config webpack.config.dev.js --progress -- --proxy=local",
+    "dev:test": "webpack-dev-server --config webpack.config.dev.js --progress -- --proxy=test",
+    "dev:mock": "webpack-dev-server --config webpack.config.dev.js --progress -- --proxy=mock",
     "build": "webpack --config webpack.config.prod.js --progress",
     "archive": "gulp archive",
     "server": "node server.js",
@@ -37,7 +37,6 @@
     "gulp-zip": "^4.0.0",
     "html-webpack-plugin": "^2.24.0",
     "http-proxy-middleware": "^0.17.4",
-    "json-comments": "^0.2.1",
     "node-sass": "^4.5.2",
     "open-browser-webpack-plugin": "^0.0.5",
     "opn": "^5.0.0",
