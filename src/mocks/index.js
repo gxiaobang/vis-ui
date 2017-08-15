@@ -5,7 +5,7 @@
 import Mock from 'mockjs';
 
 const mocks = (url, params = null, data = null) => {
-  if (NODE_REFER == 'mock') {
+  if (NODE_PROXY == 'mock') {
     console.groupCollapsed('mock')
     console.table([{
       url, params, data

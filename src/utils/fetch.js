@@ -10,7 +10,7 @@ import 'config/fetch.conf';
 import mocks from '@/mocks';
 import Vis from 'vis-ui';
 
-let sysnames = Object.keys(proxyTable[NODE_REFER] || {});
+let sysnames = Object.keys(proxyTable[NODE_PROXY] || {});
 
 // console.log(sysnames)
 
@@ -19,7 +19,7 @@ const parameter = (options) => {
 
   let arr = options.url.split('/');
   let name = arr[0] || arr[1];
-  if (NODE_REFER == 'prod') {
+  if (NODE_PROXY == 'prod') {
     if (sysnames.indexOf(name) > -1) {
       options.baseURL = api.prod[ name ];
     }
@@ -37,7 +37,7 @@ const fetch = (options = {}) => {
   const { baseURL = '/api', url } = options;
 
   // 开启mock
-  if (NODE_REFER == 'mock') {
+  if (NODE_PROXY == 'mock') {
     options.mock = true;
   }
 

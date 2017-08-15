@@ -90,7 +90,7 @@ module.exports = {
 
     // 独立css文件
     new ExtractTextPlugin({
-      filename: 'static/css/app.[chunkhash:5].css',
+      filename: 'static/css/[name].[contenthash:5].css',
       disable: false,
       allChunks: true
     }),
@@ -132,7 +132,7 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       },
-      'NODE_REFER': JSON.stringify(argv.proxy)
+      NODE_PROXY: JSON.stringify(argv.proxy)
     })
   ]
 }

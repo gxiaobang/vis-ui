@@ -1,9 +1,10 @@
 {
+  "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.dev.js --progress",
-    "dev:local": "webpack-dev-server --config webpack.config.dev.js --progress -- --proxy=local",
-    "dev:test": "webpack-dev-server --config webpack.config.dev.js --progress -- --proxy=test",
-    "dev:mock": "webpack-dev-server --config webpack.config.dev.js --progress -- --proxy=mock",
+    "dev:local": "npm run dev -- --env.proxy=local",
+    "dev:test": "npm run dev -- --env.proxy=test",
+    "dev:mock": "npm run dev -- --env.proxy=mock",
     "build": "webpack --config webpack.config.prod.js --progress",
     "archive": "gulp archive",
     "server": "node server.js",

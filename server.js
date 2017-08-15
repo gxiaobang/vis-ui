@@ -26,15 +26,15 @@ const argv = require('yargs')
 // 接口代理
 const proxyTable = require('./config/proxy.conf');
 for (let key in proxyTable[argv.proxy]) {
-  app.use('/' + key, api[argv.proxy][ key ]);
+  console.log('proxy: ' + key);
+  app.use(key, proxy(proxyTable[argv.proxy][ key ]));
 }
+
+// handle fallback for HTML5 history API
+app.use(require('connect-history-api-fallback')());
 
 // 静态文件
 app.use(express.static('./dist'));
-
-// handle fallback for HTML5 history API
-// app.use(require('connect-history-api-fallback'))
-
 
 // 监听port端口
 app.listen(argv.port, '0.0.0.0', (err) => {

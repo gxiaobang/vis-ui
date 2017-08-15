@@ -12,14 +12,11 @@ const { rootPath, srcPath } = require('./config/base.conf');
 const proxyTable = require('./config/proxy.conf');
 
 const argv = require('yargs')
-  .option('proxy', {
+  .option('env.proxy', {
+    alias: 'proxy',
     default: 'dev'
   })
-  .option('port', {
-    alias: 'p',
-    default: 8000
-  })
-  .argv
+  .argv;
 
 module.exports = {
   // cheap-module-eval-source-map is faster for development
@@ -106,7 +103,7 @@ module.exports = {
 
     // 自定义参数
     new webpack.DefinePlugin({
-      NODE_REFER: JSON.stringify(argv.proxy)
+      NODE_PROXY: JSON.stringify(argv.proxy)
     })
   ],
 
