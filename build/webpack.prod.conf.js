@@ -8,14 +8,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 const path = require('path');
-const { srcPath, rootPath, distPath, publicPath } = require('./config/base.conf');
+const { srcPath, rootPath, distPath, publicPath } = require('../config/base.conf');
 
 // 本地化
 const argv = require('yargs')
   .option('proxy', {
     default: 'dev'
   })
-  .argv
+  .argv;
 
 process.env.NODE_ENV = 'production';
 module.exports = {

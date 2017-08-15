@@ -8,8 +8,8 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 const path = require('path');
-const { rootPath, srcPath } = require('./config/base.conf');
-const proxyTable = require('./config/proxy.conf');
+const { rootPath, srcPath } = require('../config/base.conf');
+const proxyTable = require('../config/proxy.conf');
 
 const argv = require('yargs')
   .option('env.proxy', {
@@ -17,6 +17,8 @@ const argv = require('yargs')
     default: 'dev'
   })
   .argv;
+
+const port = argv.port || 8000;
 
 module.exports = {
   // cheap-module-eval-source-map is faster for development
@@ -98,7 +100,7 @@ module.exports = {
 
     // 浏览器打开地址
     new OpenBrowserPlugin({
-      url: 'http://localhost:' + argv.port
+      url: 'http://localhost:' + port
     }),
 
     // 自定义参数
@@ -111,7 +113,7 @@ module.exports = {
   devServer: {
     contentBase: srcPath,
     host: '0.0.0.0',
-    port: argv.port,
+    port: port,
     hot: true,
     noInfo: true,
     inline: true,

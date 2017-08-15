@@ -1,11 +1,12 @@
 {
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.config.dev.js --progress",
+    "dev": "webpack-dev-server --config build/webpack.dev.conf --progress",
     "dev:local": "npm run dev -- --env.proxy=local",
     "dev:test": "npm run dev -- --env.proxy=test",
     "dev:mock": "npm run dev -- --env.proxy=mock",
     "build": "webpack --config webpack.config.prod.js --progress",
+    "build:release": "npm run clean && npm run build && npm run archive",
     "archive": "gulp archive",
     "server": "node server.js",
     "clean": "rm dist -rf"
