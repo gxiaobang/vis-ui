@@ -6,7 +6,7 @@ const zip = require('gulp-zip');
 const moment = require('moment');
 
 // 压缩存档
-gulp.task('zip', () => {
+gulp.task('archive', () => {
 	let filename = moment().format('YYYYMMDDHHmm');
 	gulp.src(['./dist/**/*', '!./dist/*.zip'])
 		.pipe(zip(filename + '.zip'))
