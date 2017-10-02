@@ -1,10 +1,7 @@
 <template>
   <button
     v-bind="$props"
-    :class="{
-      'vis-btn': true,
-      ['vis-btn--' + type]: true
-    }"
+    :class="['vis-btn', 'vis-btn--' + type]"
     :type="submit ? 'submit' : 'button'"
     @click="handleClick"
   >
