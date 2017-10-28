@@ -4,7 +4,6 @@
     :disabled="formDisabled"
     v-bind="$props"
     v-model="val"
-    size="small"
     style="width: 172px"
     @change="handleChange"
   >
