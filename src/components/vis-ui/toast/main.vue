@@ -22,7 +22,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
   .vis-toast {
     position: fixed;
     left: 50%;

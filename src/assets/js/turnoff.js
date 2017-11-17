@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { evt, dom } from '@/utils';
+import { evt, dom } from '@/assets/js';
 
 export default (target, callback) => {
   let unbind = evt.add(document, 'click', (e) => {

@@ -39,7 +39,7 @@
   /**
    * 按钮
    */
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
 
   .vis-btn {
     min-width: 56px;

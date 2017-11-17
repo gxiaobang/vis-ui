@@ -9,7 +9,7 @@
 
 <script>
   import Validator from 'validatorjs';
-  import getParent from '@/utils/getParent';
+  import getParent from '@/assets/js/getParent';
   Validator.useLang('zh');
   export default {
     name: 'vis-validate',
@@ -69,7 +69,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
 
   .vis-validate {
     height: 48px;

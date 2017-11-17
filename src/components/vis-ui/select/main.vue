@@ -23,7 +23,7 @@
 
 <script>
   import { Select } from 'element-ui';
-  import getParent from '@/utils/getParent';
+  import getParent from '@/assets/js/getParent';
   import _ from 'lodash';
 
   export default {
@@ -74,7 +74,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
   .vis-select {
     /* width: 162px;
     height: 28px;

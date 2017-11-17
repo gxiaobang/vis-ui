@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import keyCode from '@/utils/keyCode';
+import keyCode from '@/assets/js/keyCode';
 export default {
   name: 'vis-pagination',
   data() {
@@ -90,7 +90,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/styles/base";
+@import "~@/assets/styles/base";
 
 .vis-pagination {
   padding: 16px 8px;

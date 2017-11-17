@@ -24,7 +24,7 @@ export default {
 
 <style lang="scss">
 @import "~normalize.css";
-@import "~@/styles/normalize-addon"; // @import "~animate.css";
+@import "~@/assets/styles/normalize-addon"; // @import "~animate.css";
 body {
   min-width: 600px;
   background-color: #e4e4e4;

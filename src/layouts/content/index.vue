@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import router from '@/utils/router';
+  import router from '@/assets/js/router';
   import PageMenu from '@/layouts/menu';
   export default {
     data() {
@@ -46,7 +46,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
 
   .content {
     padding: 16px;

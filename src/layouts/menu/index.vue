@@ -14,8 +14,8 @@
 </template>
 
 <script>
-  import router from '@/utils/router';
-  import fetch from '@/utils/fetch';
+  import router from '@/assets/js/router';
+  import fetch from '@/assets/js/fetch';
 
   export default {
     // props: ['items'],
@@ -61,7 +61,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
 
   .menu {
     float: left;

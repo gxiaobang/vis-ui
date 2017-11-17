@@ -21,7 +21,7 @@
   /**
    * 主页头部
    */
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
 
   .header {
     background-color: $white;

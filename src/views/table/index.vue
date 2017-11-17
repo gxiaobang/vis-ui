@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import fetch from '@/utils/fetch';
+import fetch from '@/assets/js/fetch';
 
 export default {
   data() {

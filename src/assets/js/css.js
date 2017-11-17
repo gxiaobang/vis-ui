@@ -2,7 +2,7 @@
  * 样式操作
  */
 
-import suports from '@/utils/suports';
+import suports from '@/assets/js/suports';
 
 const css = {
   get(elem, props) {

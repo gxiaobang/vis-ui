@@ -29,12 +29,17 @@
         </tbody>
       </table>
 
-      <img
+      <!-- <img
         v-if="!loading && data.length == 0"
         :src="require('@/images/empty.svg')"
         alt="empty"
         style="max-height: 600px;"
-      >
+      > -->
+
+      <!-- vis-icon[type="empty"] -->
+      <div class="vis-table-empty" v-if="!loading && data.length == 0">
+        <vis-icon type="empty" color="#ddd"></vis-icon>
+      </div>
     </div>
     <div class="vis-table-footer">
       <vis-pagination
@@ -53,7 +58,7 @@
 </template>
 
 <script>
-  import dom from '@/utils/dom';
+  import dom from '@/assets/js/dom';
   import _ from 'lodash';
   export default {
     name: 'vis-table',
@@ -104,7 +109,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
 
   .vis-table-wrapper {
     position: relative;
@@ -149,6 +154,12 @@
       &:nth-child(2n) {
         background-color: #f5f5f5;
       }
+    }
+
+    .vis-table-empty {
+      min-height: 200px;
+      line-height: 200px;
+      text-align: center;
     }
 
     .vis-table-loading {

@@ -20,7 +20,7 @@
       },
       size: {
         type: Number,
-        default: 32
+        default: 40
       },
       color: {
         type: String,

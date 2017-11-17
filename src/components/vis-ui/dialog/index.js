@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Component from './main';
-import router from '@/utils/router';
+import router from '@/assets/js/router';
 
 /* istanbul ignore next */
 Component.install = function(Vue) {
