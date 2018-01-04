@@ -4,7 +4,7 @@
       <table class="vis-table">
         <thead>
           <tr>
-            <th v-for="item in columns">
+            <th v-for="(item,key) in columns" :key="key">
               {{ item.title }}
             </th>
           </tr>
@@ -38,7 +38,7 @@
 
       <!-- vis-icon[type="empty"] -->
       <div class="vis-table-empty" v-if="!loading && data.length == 0">
-        <vis-icon type="empty" color="#ddd"></vis-icon>
+        <vis-icon type="empty" color="#ddd" :size="50"></vis-icon>
       </div>
     </div>
     <div class="vis-table-footer">

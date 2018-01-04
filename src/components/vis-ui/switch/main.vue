@@ -104,6 +104,7 @@
       border-width: 2px;
       border-radius: 14px;
       background-color: #c0c0c0;
+      transition: .5s;
 
       overflow: hidden;
 

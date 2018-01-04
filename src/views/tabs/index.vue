@@ -1,7 +1,10 @@
 <template>
   <div class="page">
     <h3>{{ title }}</h3>
-    <vis-tabs></vis-tabs>
+    <vis-tabs>
+      <vis-tab-pane label="tab 1 标题">tab 1 内容</vis-tab-pane>
+      <vis-tab-pane label="tab 2 标题">tab 2 内容</vis-tab-pane>
+    </vis-tabs>
   </div>
 </template>
 

@@ -3,7 +3,7 @@ import Component from './main';
 import router from '@/assets/js/router';
 
 /* istanbul ignore next */
-Component.install = function(Vue) {
+Component.install = (Vue) => {
   Vue.component(Component.name, Component);
 };
 

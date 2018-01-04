@@ -1,5 +1,5 @@
 <template>
-  <transition>
+  <transition name="fade">
     <div v-if="visible" class="vis-dialog-wrapper">
       <div :class="{
         'vis-dialog': true,

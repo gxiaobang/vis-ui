@@ -7,7 +7,8 @@
       <ul class="vis-pagination-pager">
         <li @click="handleClick('prev')">&laquo;</li>
         <li
-          v-for="num in nums"
+          v-for="(num,key) in nums"
+          :key="key"
           :class="{ active: num == index }"
           @click="handleClick(num)"
         >{{ num }}</li>

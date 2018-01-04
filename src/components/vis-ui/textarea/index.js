@@ -1,7 +1,7 @@
 import Component from './main';
 
 /* istanbul ignore next */
-Component.install = function(Vue) {
+Component.install = (Vue) => {
   Vue.component(Component.name, Component);
 };
 
