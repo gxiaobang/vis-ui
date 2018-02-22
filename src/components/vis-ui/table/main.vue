@@ -10,8 +10,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in data">
-            <td v-for="(key, index) in keys">
+          <tr v-for="(item, n) in data" :key="n">
+            <td v-for="(key, index) in keys" :key="index">
               <component
                 v-if="columns[index].component"
                 :is="columns[index].render(item[ columns[index].key ], item)"
@@ -119,6 +119,7 @@
       position: relative;
       overflow: auto;
       min-height: 120px;
+      height: calc(100% - 64px);
     }
 
     .vis-table {
@@ -157,8 +158,10 @@
     }
 
     .vis-table-empty {
-      min-height: 200px;
-      line-height: 200px;
+      /* min-height: 200px;
+      line-height: 200px; */
+      position: relative;
+      top: calc(46% - 50px);
       text-align: center;
     }
 
