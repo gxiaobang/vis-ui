@@ -37,7 +37,7 @@ export default {
     }).then(fetch.succ(data => {
 
       // console.log(data)
-      // this.data = data.data;
+      this.data = data.data;
       this.page.total = 100;
     }));
   },
