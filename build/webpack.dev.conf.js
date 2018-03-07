@@ -59,7 +59,7 @@ module.exports = {
         use: [
           'style-loader',
           'css-loader?sourceMap',
-          'postcss-loader',
+          'postcss-loader?sourceMap',
           'sass-loader?sourceMap'
         ]
       },
