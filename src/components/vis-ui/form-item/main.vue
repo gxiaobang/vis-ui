@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import getParent from '@/utils/getParent';
+  import getParent from '@/assets/js/getParent';
 
   export default {
     name: 'vis-form-item',
@@ -46,7 +46,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
   // 表单元素
   .vis-form-item {
     display: inline-block;

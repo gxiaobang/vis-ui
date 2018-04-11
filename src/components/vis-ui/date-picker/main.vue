@@ -12,7 +12,7 @@
 </template>
 <script>
   import { DatePicker } from 'element-ui';
-  import getParent from '@/utils/getParent';
+  import getParent from '@/assets/js/getParent';
   import moment from 'moment';
 
   export default {

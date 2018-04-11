@@ -1,14 +1,12 @@
 <template>
   <div class="page">
     <h3>{{ title }}</h3>
-
-    <vis-table :data="data" :columns="columns" :page="page"></vis-table>
-
+    <vis-table :data="data" :columns="columns" :page="page" style="height: calc(100vh - 146px);"></vis-table>
   </div>
 </template>
 
 <script>
-import fetch from '@/utils/fetch';
+import fetch from '@/assets/js/fetch';
 
 export default {
   data() {

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import getParent from '@/utils/getParent';
+  import getParent from '@/assets/js/getParent';
   export default {
     name: 'vis-textarea',
     data() {
@@ -47,7 +47,7 @@
  /**
   * 多行文本框
   */
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
 
   .vis-textarea {
     width: 770px;

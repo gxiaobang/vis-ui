@@ -57,7 +57,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
 
   .vis-form {
     &.vis-form--inline {

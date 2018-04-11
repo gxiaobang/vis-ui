@@ -2,7 +2,7 @@
  * 字典表map
  */
 
-import fetch from '@/utils/fetch';
+import fetch from '@/assets/js/fetch';
 
 let dic;
 // 请求字典表

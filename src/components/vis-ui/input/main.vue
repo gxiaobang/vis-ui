@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import getParent from '@/utils/getParent';
+  import getParent from '@/assets/js/getParent';
   export default {
     name: 'vis-input',
     data() {
@@ -64,7 +64,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
   .vis-input {
     width: 172px;
     height: 30px;

@@ -1,5 +1,5 @@
 <template>
-  <transition>
+  <transition name="fade">
     <div v-if="visible" class="vis-dialog-wrapper">
       <div :class="{
         'vis-dialog': true,
@@ -72,7 +72,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
 
   .vis-dialog-wrapper {
     position: fixed;
@@ -211,7 +211,7 @@
       .vis-dialog--footer {
         // padding: 10px 70px;
         // border-top: $border;
-
+        padding: 4px;
         text-align: center;
 
         button {

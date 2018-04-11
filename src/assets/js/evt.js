@@ -2,7 +2,7 @@
  * 事件
  */
 
-import suports from '@/utils/suports';
+import suports from '@/assets/js/suports';
 
 const evt = {
   // 添加事件

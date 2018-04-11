@@ -7,7 +7,8 @@
       <ul class="vis-pagination-pager">
         <li @click="handleClick('prev')">&laquo;</li>
         <li
-          v-for="num in nums"
+          v-for="(num,key) in nums"
+          :key="key"
           :class="{ active: num == index }"
           @click="handleClick(num)"
         >{{ num }}</li>
@@ -23,7 +24,7 @@
 </template>
 
 <script>
-import keyCode from '@/utils/keyCode';
+import keyCode from '@/assets/js/keyCode';
 export default {
   name: 'vis-pagination',
   data() {
@@ -90,7 +91,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/styles/base";
+@import "~@/assets/styles/base";
 
 .vis-pagination {
   padding: 16px 8px;

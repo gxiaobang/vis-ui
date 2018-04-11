@@ -9,7 +9,7 @@
 
 <script>
   import { InputNumber } from 'element-ui';
-  import getParent from '@/utils/getParent';
+  import getParent from '@/assets/js/getParent';
 
   export default {
     name: 'vis-input-number',

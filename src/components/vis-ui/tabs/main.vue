@@ -1,11 +1,9 @@
 <template>
   <div class="vis-tabs">
-    <div class="vis-tabs-header">
-      <div v-for="(item,key) in tabs" :key="key" @click="handleTabs(key)">{{ item.title }}</div>
-    </div>
-    <div class="vis-tabs-body">
-      <div v-for="(item,key) in tabs" :key="key">{{ item.body }}</div>
-    </div>
+    <!-- {{ $slots.default }} -->
+
+    <!-- <component v-for="(item,key) in $slots.default" :key="key"></component> -->
+    <slot></slot>
   </div>
 </template>
 
@@ -16,13 +14,9 @@
 export default {
   name: 'vis-tabs',
   data() {
+    // console.log(this.$slots);
     return {
-      tabs: [
-        {
-          title: 'title 1',
-          body: 'body 1'
-        }
-      ],
+      panes: [],
       current: 0
     }
   },
@@ -32,6 +26,10 @@ export default {
       console.log(index)
 
       this.$emit('tabs', index);
+    },
+
+    addPane(pane) {
+      this.panes.push(pane);
     }
   }
 }

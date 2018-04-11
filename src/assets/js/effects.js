@@ -21,7 +21,7 @@
  *     })
  */
 
-import { evt, css, cls } from '@/utils';
+import { evt, css, cls } from '@/assets/js';
 import _ from 'lodash';
 
 // 动画帧 name, 完成 complete

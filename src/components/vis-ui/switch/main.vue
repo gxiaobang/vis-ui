@@ -10,7 +10,7 @@
 
 <script>
   import _ from 'lodash';
-  import getParent from '@/utils/getParent';
+  import getParent from '@/assets/js/getParent';
 
   export default {
     name: 'vis-switch',
@@ -55,7 +55,7 @@
 </script>
 
 <style lang="scss">
-  @import "~@/styles/base";
+  @import "~@/assets/styles/base";
 
   .vis-switch {
     display: inline-block;
@@ -104,6 +104,7 @@
       border-width: 2px;
       border-radius: 14px;
       background-color: #c0c0c0;
+      transition: .5s;
 
       overflow: hidden;
 
