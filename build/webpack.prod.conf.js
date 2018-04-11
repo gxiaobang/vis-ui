@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const path = require('path');
 const { srcPath, rootPath, distPath, publicPath } = require('../config/base.conf');
@@ -85,8 +86,8 @@ module.exports = {
   stats: "errors-only",
 
   plugins: [
-
     new FriendlyErrorsPlugin(),
+    new CleanWebpackPlugin(['dist'], rootPath),   // 清除dist文件夹
 
     // 独立css文件
     new ExtractTextPlugin({
