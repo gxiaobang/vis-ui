@@ -12,16 +12,23 @@ axios.interceptors.request.use(config => {
     Vis.loading()
   }
   return config;
-}, error => {
-  return Promise.reject(error);
+}, err => {
+  return Promise.reject(err);
 })
 
 // 添加响应拦截器
-axios.interceptors.response.use(response => {
-  if (response.config) {
+axios.interceptors.response.use(res => {
+  if (res.config) {
     Vis.loading('close')
   }
-  return response;
-}, error => {
-  return Promise.reject(error);
+  return res;
+}, err => {
+  return Promise.reject(err);
 })
+
+// 业务处理返回值 成功或失败
+axios.succ = (callback) => {
+  return res => {
+
+  }
+}

@@ -30,8 +30,8 @@ const components = {
   Icon, Spin, Button, Input, InputNumber, Form, FormItem, FormItemGroup, Checkbox, CheckboxGroup, Select, Option, Toast, Table, Dialog, Pagination, DatePicker, Textarea, Validate, Switch, Tabs, TabPane
 };
 
-for (let key in components) {
-  components[key].install(Vue);
+for (let name in components) {
+  Vue.use(components[ name ]);
 }
 
 export default components;
